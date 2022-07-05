@@ -1,4 +1,4 @@
-# OpenFold-DeepSequence integration for protein 
+# OpenFold-DeepSequence integration for protein mutation analysis
 
 The best way to understand the integration between the two models is to understand the flow of data between them.
 
