@@ -227,7 +227,7 @@ config = mlc.ConfigDict(
                     "same_prob": 0.1,
                     "uniform_prob": 0.1,
                 },
-                "max_recycling_iters": 3,
+                "max_recycling_iters": 0, #3
                 "msa_cluster_features": True,
                 "reduce_msa_clusters_by_max_templates": False,
                 "resample_msa_in_recycling": True,

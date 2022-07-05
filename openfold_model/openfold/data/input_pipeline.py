@@ -179,8 +179,10 @@ def process_tensors_from_config(tensors, common_cfg, mode_cfg):
     tensors = compose(nonensembled)(tensors)
 
     if("no_recycling_iters" in tensors):
+        print("\t\tRecycling from tensor")
         num_recycling = int(tensors["no_recycling_iters"])
     else:
+        print("\t\tRecycling from configs")
         num_recycling = common_cfg.max_recycling_iters
 
     tensors = map_fn(

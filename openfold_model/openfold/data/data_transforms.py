@@ -180,8 +180,23 @@ def randomly_replace_msa_with_unknown(protein, replace_proportion):
     return protein
 
 
+def save_sampling_indices(var, var_name, output_dir="./../data_pickle"):
+
+    import pickle
+    import os
+
+    filepath = f"{var_name}.pickle"
+    msa_output_path = os.path.join(output_dir, filepath)
+    with open(msa_output_path, 'wb') as f:
+        print(f"Dumping pickle at {msa_output_path}")
+        pickle.dump(var, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+
 @curry1
 def sample_msa(protein, max_seq, keep_extra, seed=None):
+
+    print("\tCALLING MSA SAMPLING")
+
     """Sample MSA randomly, remaining sequences are stored are stored as `extra_*`.""" 
     num_seq = protein["msa"].shape[0]
     g = torch.Generator(device=protein["msa"].device)
@@ -196,6 +211,9 @@ def sample_msa(protein, max_seq, keep_extra, seed=None):
     sel_seq, not_sel_seq = torch.split(
         index_order, [num_sel, num_seq - num_sel]
     )
+
+    save_sampling_indices(sel_seq.cpu().detach().numpy(), "sel_seq")
+    save_sampling_indices(not_sel_seq.cpu().detach().numpy(), "not_sel_seq")
 
     for k in MSA_FEATURE_NAMES:
         if k in protein:
