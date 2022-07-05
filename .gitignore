@@ -1,2 +1,6 @@
 token_github.txt
 __pycache__/
+
+# Do not track data
+data_pickle/
+openfold_model/openfold/resources/openfold_params/
