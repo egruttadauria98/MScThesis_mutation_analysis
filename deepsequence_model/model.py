@@ -28,9 +28,6 @@ class VAE(nn.Module):
         # Get data input size for the first layer of the VAE
         self.seq_len = data.seq_len
         self.alphabet_size = data.alphabet_size
-        
-        # TODO: delete this after debugging
-        self.n_eff = data.n_eff
 
         # If bayesian=True, creates weight distribution for the decoder
         # Default behavious is vanilla VAE
@@ -97,7 +94,23 @@ class VAE(nn.Module):
         reconstructed_x = self._decode_variational(z)
 
         return reconstructed_x, mu, logvar 
-        
 
+    
+    def compute_logpxz_plus_kl_latent(self):
+
+        '''
+        This function is not for training, but to be used for the delta_elbo method of the DataHelperAugmented
+        '''
+
+        pass
+
+
+    def compute_mse_plus_kl_latent(self):
+
+        '''
+        This function is not for training, but to be used for the delta_elbo method of the DataHelperAugmented
+        '''
+
+        pass
 
 

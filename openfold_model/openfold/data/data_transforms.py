@@ -197,6 +197,10 @@ def sample_msa(protein, max_seq, keep_extra, seed=None):
 
     print("\tCALLING MSA SAMPLING")
 
+    import random
+    seed = random.randint(0, 1000)
+    print(f"seed: {seed}")
+
     """Sample MSA randomly, remaining sequences are stored are stored as `extra_*`.""" 
     num_seq = protein["msa"].shape[0]
     g = torch.Generator(device=protein["msa"].device)
@@ -211,6 +215,9 @@ def sample_msa(protein, max_seq, keep_extra, seed=None):
     sel_seq, not_sel_seq = torch.split(
         index_order, [num_sel, num_seq - num_sel]
     )
+
+    print(sel_seq.cpu().detach().numpy()[0])
+    print(sel_seq.cpu().detach().numpy().sum())
 
     save_sampling_indices(sel_seq.cpu().detach().numpy(), "sel_seq")
     save_sampling_indices(not_sel_seq.cpu().detach().numpy(), "not_sel_seq")
