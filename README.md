@@ -1,4 +1,5 @@
-# OpenFold-DeepSequence integration for protein mutation analysis
+# A study on the effectiveness of AlphaFold's hidden MSA representation for protein mutation analysis
+
 
 ## Virtual environments
 To successfully run both OpenFold and DeepSequence, two separate conda environments are needed 
