@@ -1,4 +1,5 @@
-# A study on the effectiveness of AlphaFold's hidden MSA representation for protein mutation analysis
+# A study on the effectiveness of AlphaFold's hidden MSA representation for protein mutation analysis 
+## Thesis MSc in Data Science @ Bocconi University
 
 
 ## Virtual environments
